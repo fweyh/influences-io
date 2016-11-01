@@ -1,4 +1,6 @@
-import {List, Record} from 'immutable';
+import {Map, List, Record} from 'immutable';
+
+export const INITIAL_STATE = Map();
 
 export var Influence = Record({
   from:"Sample Song 1", 
