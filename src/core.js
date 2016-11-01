@@ -28,6 +28,8 @@ export function deleteInfluence(state, influenceId){
 }
 
 export function vote(state, influenceId) {
+  // Perhaps we could use the reducer so that is give only the relevant
+  // part to the vote function
   return state.updateIn(
     ['influences', influenceId, "votes"],
     votes => votes + 1
