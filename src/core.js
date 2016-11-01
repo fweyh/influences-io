@@ -21,10 +21,13 @@ export function addInfluence(state, influenceId, influence) {
   return state.update('influences', influences => influences.set(influenceId, influence))
 };
 
+export function deleteInfluence(state, influenceId){
+  return state.deleteIn(['influences', influenceId]);
+}
+
 export function vote(state, influenceId) {
   return state.updateIn(
     ['influences', influenceId, "votes"],
-    0,
     votes => votes + 1
   );
 };

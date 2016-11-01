@@ -46,6 +46,27 @@ describe('reducer', () => {
         }));
     });
 
+    it('handles DELETE_INFLUENCE', () => {
+        const initialState = fromJS({
+            influences: {
+                [idA]: influenceA,
+                [idB]: influenceB
+            }
+        });
+        const action = {
+            type: 'DELETE_INFLUENCE',
+            influenceId: idB,
+            influence: influenceB
+        };
+        const nextState = reducer(initialState, action);
+
+        expect(nextState).to.equal(fromJS({
+            influences: {
+                [idA]: influenceA
+            }
+        }));
+    });
+
     it('handles VOTE', () => {
         const initialState = fromJS({
             influences: {

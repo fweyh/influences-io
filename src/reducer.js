@@ -1,4 +1,4 @@
-import {setInfluences, addInfluence, vote, INITIAL_STATE} from './core';
+import {setInfluences, addInfluence, deleteInfluence, vote, INITIAL_STATE} from './core';
 
 export default function reducer(state = INITIAL_STATE, action) {
 
@@ -7,6 +7,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         return setInfluences(state, action.influences);
     case 'ADD_INFLUENCE':
         return addInfluence(state, action.influenceId, action.influence);
+    case 'DELETE_INFLUENCE':
+        return deleteInfluence(state, action.influenceId, action.influence);
     case 'VOTE':
         return vote(state, action.influenceId);
     }
