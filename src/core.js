@@ -13,7 +13,9 @@ export var Song = Record({
 });
 
 export function setInfluences(state, influences) {
-  // For convenience, we'll allow the input entries to be a regular JavaScript array (or actually anything iterable). It should still be an Immutable List by the time it's in the state tree:
+  // For convenience, we'll allow the input entries to be a regular JavaScript 
+  // array (or actually anything iterable). It should still be an Immutable List
+  // by the time it's in the state tree:
   return state.set('influences', influences);
 };
 
