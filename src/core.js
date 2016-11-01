@@ -3,13 +3,13 @@ import {Map, List, Record} from 'immutable';
 export const INITIAL_STATE = Map();
 
 export var Influence = Record({
-  from:"Sample Song 1", 
-  to: "Sample Song 2",
+  from: "Default Song 1", 
+  to: "Default Song 2",
   votes: 0
 });
 export var Song = Record({
-  author:"Sample Author", 
-  title: "Sample Title"
+  author: "Default Author", 
+  title: "Default Title"
 });
 
 export function setInfluences(state, influences) {
