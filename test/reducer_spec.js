@@ -2,6 +2,7 @@ import {fromJS, Map} from 'immutable';
 import {expect} from 'chai';
 
 import reducer from '../src/reducer';
+import {Influence, Song} from '../src/core';
 import {idA, idB, influenceA, influenceB, influenceBwithVote} from './test_helper';
 
 describe('reducer', () => {
@@ -103,6 +104,49 @@ describe('reducer', () => {
                 }
             })
         );
+    });
+
+    it('can be used with reduce', () => {
+        const actions = [
+            {type: 'SET_INFLUENCES', influences: fromJS({"id1":influenceA})},
+            {type: 'VOTE', influenceId: "id1"},
+            {type: 'VOTE', influenceId: "id1"},
+            {type: 'VOTE', influenceId: "id1"},
+            {type: 'ADD_INFLUENCE', influenceId: "id2", influence: influenceB},
+            {type: 'VOTE', influenceId: "id2"},
+            {type: 'VOTE', influenceId: "id1"},
+            {type: 'VOTE', influenceId: "id1"},
+            {type: 'VOTE', influenceId: "id2"},
+            {type: 'VOTE', influenceId: "id2"},
+        ];
+        const finalState = actions.reduce(reducer, Map());
+
+        expect(finalState).to.equal(fromJS({
+            influences: {
+                "id1": {
+                    from: {
+                        author: "Nick Drake",
+                        title: "Parasite"
+                    }, 
+                    to: {
+                        author: "Radiohead",
+                        title: "Subterranean Homesick Alien"
+                    },
+                    votes: 5
+                }, 
+                "id2": {
+                    from: {
+                        author: "Jimi Hendrix",
+                        title: "You Got Me Floating"
+                    }, 
+                    to: {
+                        author: "Iggy Pop & The Stooges",
+                        title: "I Wanna Be Your Dog"
+                    },
+                    votes: 3
+                }
+            }
+        }));
     });
 
 });
