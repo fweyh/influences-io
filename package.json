@@ -1,10 +1,10 @@
 {
   "name": "influences-io",
   "version": "1.0.0",
-  "description": "",
+  "description": "Music Influences",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node index.js",
+    "start": "babel-node index.js",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -14,7 +14,7 @@
     ]
   },
   "keywords": [],
-  "author": "",
+  "author": "Fabien Weyh",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -24,6 +24,8 @@
     "mocha": "^3.1.2"
   },
   "dependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
     "chai-immutable": "^1.6.0",
     "immutable": "^3.8.1",
     "redux": "^3.6.0",
